@@ -1,0 +1,37 @@
+.schema-list-wrapper {
+  margin-top: 40px;
+  height: 282px;
+  .schema-list-item {
+    display: flex;
+    justify-content: space-between;
+    background: #ffffff;
+    border-bottom: 1px solid #f1f1f1;
+    padding: 13px 0 14px 20px;
+    &:hover {
+      background: #f1f1f1;
+      background-blend-mode: multiply;
+      .schemalist-buttons {
+        visibility: visible;
+      }
+    }
+    .schemalist-buttons {
+      margin-right: 5px;
+      visibility: hidden;
+      span {
+        margin: 0 15px;
+        cursor: pointer;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: #1390e5;
+        &:last-child {
+          color: #ff0000;
+        }
+      }
+    }
+  }
+}
+.schema-list-create-schema-button {
+  width: 195px;
+  margin-top: 40px;
+}

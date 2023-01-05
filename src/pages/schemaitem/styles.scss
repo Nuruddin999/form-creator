@@ -1,0 +1,38 @@
+.form-item {
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 36px 0 36px 36px;
+  .fields-container {
+    width: 562px;
+    .form-item-shema-item {
+      margin-top: 20px;
+    }
+    // .validation-button,
+    // .form-item-dropdown,
+    // .form-item-shema-item {
+    //   width: 562px;
+    // }
+    .validation-button {
+      margin-top: 40px;
+    }
+    .validation-result {
+      border-radius: 5px;
+      padding: 16px 0 16px 14px;
+      margin-top: 20px;
+      display: flex;
+      &.validation-error {
+        border: 1px solid #eb5757;
+        color: #eb5757;
+      }
+      &.validation-success {
+        border: 1px solid #00A241;
+        color:#00A241;
+      }
+      span {
+        &:last-child {
+          margin-left: 14px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,93 @@
+.property-form {
+  display: flex;
+  align-items: center;
+  &.isDisplayed {
+    align-items: initial;
+    background: #ffffff;
+    padding-bottom: 40px;
+    margin-top: 20px;
+  }
+  .property-key,
+  .property-label,
+  .dropdown-block {
+    margin: 20px 0 0 30px;
+    width: 422px;
+  }
+  .created-property-item {
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+    &.is-created {
+      align-items: baseline;
+      cursor: pointer;
+    }
+    .arrow-icon {
+      padding-right: 10px;
+    }
+    .created-property-keytype {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      color: #272727;
+      opacity: 0.6;
+    }
+  }
+  .property-form-dropdown-inputs {
+    width: 422px;
+    flex-direction: column;
+    margin-left: auto;
+    .property-form-dropdown-inputs-keyInp {
+      width: 300px;
+      position: relative;
+      span {
+        display: block;
+        width: 30px;
+        position: absolute;
+        top: 0px;
+        right: 5px;
+        cursor: pointer;
+      }
+    }
+  }
+  .validation-section {
+    margin-left: 108px;
+    flex: 1;
+    .validation-required-toggle {
+      margin-top: 50px;
+    }
+    .validation-section-minmax {
+      display: flex;
+      margin-top: 30px;
+      .validation-section-min-max-input {
+        flex-basis: 200px;
+        &:last-of-type {
+          margin-left: 22px;
+        }
+      }
+    }
+    .pattern-block {
+      margin-top: 18px;
+      width: 422px;
+    }
+  }
+  .delete-icon {
+    margin: 13px 13px 0 auto;
+    &.isDisplayed {
+          margin: 13px 13px 0 0;
+    }
+
+    cursor: pointer;
+  }
+}
+.section-title {
+  display: inline-block;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #272727;
+  margin-top: 20px;
+  &.title-left {
+    margin-left: 30px;
+  }
+}

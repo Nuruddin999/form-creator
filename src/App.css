@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  font-family: -apple-system, "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  background: #FAFAFA;
+}
+
+@media (min-width: 1440px) {
+  body {
+    width: 1440px;
+    margin: 0 auto 0;
+  }
+}
+.h100 {
+  height: calc(100vh - 64px);
+}

@@ -1,0 +1,32 @@
+@mixin centered {
+  display: flex;
+     justify-content: center;
+     align-items: center;
+}
+.navbar-wrapper {
+  display: flex;
+  justify-content: space-around;
+  background-color: #ffffff;
+  height: 80px;
+  color: #1390E5;
+  font-size: 18px;
+  border-bottom:  1px solid #F1F1F1;;
+  .navbar-menu {
+    display: flex;
+    justify-content: space-between;
+    div {
+      @include centered();
+     margin: 0 9px;
+     padding: 0 20px;
+      height: 100%;
+      cursor: pointer;
+      &:hover {
+        border-bottom: 2px solid  #1390E5;
+      }
+    }
+  }
+  .logout-btn {
+    cursor: pointer;
+   @include centered();
+  }
+}

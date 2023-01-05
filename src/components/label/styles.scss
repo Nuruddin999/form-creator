@@ -1,0 +1,15 @@
+.labelcomp {
+  box-sizing: border-box;
+  label {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    &.error {
+      color: #eb5757;
+    }
+    &::before {
+      content: "*";
+      color: red;
+    }
+  }
+}

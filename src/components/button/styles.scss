@@ -1,0 +1,25 @@
+.uibutton {
+  button {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    border-radius: 5px;
+    outline: none;
+    border:unset;
+    padding: 14px 20px;
+    cursor: pointer;
+    width: 100%;
+    &:disabled {
+     opacity: 0.5;
+    }
+    &.fill {
+      color: #ffffff;
+      background: #1390e5;
+    }
+    &.inline {
+      color: #1390E5;
+      border: 1px solid #1390E5;
+      background: #FFFFFF;
+    }
+  }
+}

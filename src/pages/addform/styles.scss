@@ -1,0 +1,31 @@
+.property {
+  margin: 0 200px 0;
+  font-weight: 700;
+  h2 {
+    margin-top: 40px;
+  }
+  .schema-name {
+    max-width: 422px;
+  }
+  .schema-description {
+    margin-top: -11px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+    opacity: 0.5;
+  }
+  .divider {
+    background: #C4C4C4;
+    height: 1px;
+    margin-top: 30px;
+  }
+  .create-property-block {
+    margin-top: 20px;
+  }
+}
+.property-action-butttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
