@@ -13,8 +13,8 @@ const SchemaItem: FC = () => {
   const [fields, setFields] = useState({})
   const [fieldsError, setFieldsError] = useState({})
   const { fetchSchemaItem } = useActions();
-  const { schemaItem } = useTypedSelector(state => state.schema);
-  let { id } = useParams<{ id: string }>()
+  const { schemaItem, isLoading } = useTypedSelector(state => state.schema);
+  const { id } = useParams<{ id: string }>()
   const handleSubmit = (e: any) => {
     e.preventDefault()
     handleValidation()
@@ -22,7 +22,7 @@ const SchemaItem: FC = () => {
 
   const handleValidation = () => {
     let formIsValid = true
-    schemaItem.schema.fields.forEach(({ label, validation, type }) => {
+    schemaItem.fields.forEach(({ label, validation, type }) => {
       const innerStateField = fields[label as keyof typeof fields]
       if (!innerStateField && validation.required) {
         setFieldsError(state => ({ ...state, [label]: 'Поле должно быть заполнено' }))
@@ -51,7 +51,6 @@ const SchemaItem: FC = () => {
         }
       }
     })
-    console.log('form is valid', formIsValid);
     setValidationStatus(state => formIsValid ? 'passed' : 'failed')
     return formIsValid;
   }
@@ -67,16 +66,15 @@ const SchemaItem: FC = () => {
   }
 
   useEffect(() => {
-    fetchSchemaItem(parseInt(id))
+    fetchSchemaItem(id)
   }, []
   )
-  console.log(fieldsError)
-  return (
+  return isLoading ? <div>loading</div> :  (
     <div className='form-item'>
-      {schemaItem.id !== 0 && <div className='fields-container'>
-        <h2>{schemaItem.schema.name}</h2>
+      {schemaItem.id && <div className='fields-container'>
+        <h2>{schemaItem.name}</h2>
         <form id='form-item' onSubmit={handleSubmit}>
-          {schemaItem.schema.fields.map((field, index) =>
+          {schemaItem.fields.map((field, index) =>
             <div key={field.key}>
               {field.options ?
                 <div className='form-item-dropdown'>

@@ -1,6 +1,6 @@
 export interface IUser {
-  username: string;
-  password: string;
+  uid: string;
+  email: string;
 }
 export interface IValidation {
   required: boolean,

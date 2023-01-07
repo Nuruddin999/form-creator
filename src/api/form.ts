@@ -2,39 +2,42 @@
 
 import { ISchema } from "../store/reducers/formschema/types";
 import { formApi } from "./index";
+import { db } from "./firebase-config";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+  getDoc,
+} from "firebase/firestore";
 
+const schemasCollectionRef = collection(db, "schemas");
 
 export const createFormApi = async (schema: ISchema) => {
 
-  const response = await formApi.post('/form', {
-    schema
-  }, { headers:{
-    'Authorization': `Bearer ${localStorage.getItem("access_token")}`
-  } })
-  return response.data
+  const response = await addDoc(schemasCollectionRef,schema)
+
+  return response
 }
-export const getFormsApi = async () => {
-  const response = await formApi.get('/form', { headers:{
-    'Authorization': `Bearer ${localStorage.getItem("access_token")}`
-  } })
-  return response.data
+export const getFormsApi = async () : Promise<any> => {
+  const data = await getDocs(schemasCollectionRef)
+  return data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
 }
-export const getFormItemApi = async (id: number) => {
-  const response = await formApi.get(`/form/${id}`, { headers:{
-    'Authorization': `Bearer ${localStorage.getItem("access_token")}`
-  }})
-  return response.data
+export const getFormItemApi = async (id: string) : Promise<any> => {
+  const docRef = doc(db, "schemas", id);
+  const data = await getDoc(docRef)
+  return ({...data.data(), id})
 }
-export const removeFormItemApi = async (id: number) => {
-  const response = await formApi.delete(`/form/${id}`, { headers:{
-    'Authorization': `Bearer ${localStorage.getItem("access_token")}`
-  } })
-  return response.data
+export const removeFormItemApi = async (id: string) => {
+  const userDoc = doc(db, "schemas", id);
+  const response = await deleteDoc(userDoc);
+  return response
 }
 
-export const updateFormItemApi = async (id: number, schema: ISchema) => {
-  const response = await formApi.post(`/form/${id}`, {
-    schema
-  })
-  return response.data
+export const updateFormItemApi = async (id: string, schema: ISchema) => {
+  const docRef = doc(db, "schemas", id);
+ const response =  await updateDoc(docRef, schema);
+  return response
 }

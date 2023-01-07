@@ -14,25 +14,25 @@ const SchemasList: FC = () => {
   useEffect(() => {
     fetchSchemas()
   }, [])
-  const removeItem = (id: number) => {
+  const removeItem = (id: string) => {
     removeSchemaItem(id)
   }
-  const editItem = (id: number) => {
+  const editItem = (id: string) => {
     router.push(`${RouteNames.SCHEMAUPDT}/${id}`)
   }
   return (
     <div>
       <h2>Мои схемы</h2>
       <div className='schema-list-wrapper'>
-        {schemas.length > 0 && schemas.map(({ id, schema }) =>
+        {schemas.length > 0 ? schemas.map(({ id, name, fields }) =>
           <div key={id} className='schema-list-item'>
-            <span>{schema.name}</span>
+            <span>{name}</span>
             <div className='schemalist-buttons'>
               <span onClick={() => router.push(`${RouteNames.SCHEMAITEM}/${id}`)}>Просмотреть</span>
-              <span onClick={(e) => editItem(id)}>Изменить</span>
-              <span onClick={(e) => removeItem(id)}>Удалить</span>
+              <span onClick={(e) =>id && editItem(id)}>Изменить</span>
+              <span onClick={(e) => id && removeItem(id)}>Удалить</span>
             </div>
-          </div>)}
+          </div>):<span> нет данных</span>}
       </div>
       <div className='schema-list-create-schema-button'>
         <Button

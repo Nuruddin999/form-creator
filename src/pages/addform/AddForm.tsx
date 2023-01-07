@@ -14,16 +14,17 @@ import { RouteNames } from '../../router';
 import DeleteIcon from '../../DeleteIcon.svg';
 import './styles.scss'
 import TextField from '../../components/textfield/TextField';
+import Loader from '../../components/loader/loader';
 interface AddModalProps {
 
 }
 
 const AddModal: FC<AddModalProps> = (props) => {
-  const { schemaItem } = useTypedSelector(state => state.schema);
-  console.log(schemaItem)
+  const { schemaItem, isLoading, error } = useTypedSelector(state => state.schema);
+
   let { id } = useParams<{ id?: string }>()
-  const [properties, setProperty] = useState<Array<IProperty>>(id ? schemaItem.schema.fields : [])
-  console.log(properties)
+  const [properties, setProperty] = useState<Array<IProperty>>(id ? schemaItem.fields : [])
+
   const [property, setField] = useState({
     label: '',
     key: '',
@@ -63,11 +64,12 @@ const AddModal: FC<AddModalProps> = (props) => {
   }
   const update = () => {
     if (id) {
-      updateSchemaItem(parseInt(id), {
+      updateSchemaItem(id, {
         name: propertyName,
         fields: properties
       })
     }
+    router.push(RouteNames.SCHEMAS)
   }
   const handleOpenTab = (index: number) => {
     if (openedTabs[index as keyof typeof openedTabs] === index) {
@@ -110,10 +112,9 @@ const AddModal: FC<AddModalProps> = (props) => {
 
   useEffect(() => {
     if (id) {
-      fetchSchemaItem(parseInt(id))
+      fetchSchemaItem(id);
     }
     else {
-      console.log('not id')
       setProperty([])
       setField(state => ({
         ...state,
@@ -132,9 +133,8 @@ const AddModal: FC<AddModalProps> = (props) => {
 
   useEffect(() => {
     if (id) {
-      console.log('set property')
-      setProperty(schemaItem.schema.fields)
-      setPropertyName(schemaItem.schema.name)
+      setProperty(schemaItem.fields)
+      setPropertyName(schemaItem.name)
     }
   }, [schemaItem])
 
@@ -163,8 +163,7 @@ const AddModal: FC<AddModalProps> = (props) => {
     setProperty([...properties, { ...propertyObj }])
   }
 
-  return (
-    <div
+  return isLoading ? <Loader /> :( <div
     >
       <form onSubmit={handleSubmit} id='property-form'>
         <div>
@@ -232,7 +231,3 @@ const AddModal: FC<AddModalProps> = (props) => {
 };
 
 export default AddModal
-
-function fetchSchemaItem(arg0: number) {
-  throw new Error('Function not implemented.');
-}

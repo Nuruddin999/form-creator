@@ -17,7 +17,7 @@ const Navbar: FC = () => {
     <div>
       <div>
         {isAuth
-          ?
+           &&
           <div className='navbar-wrapper'>
             <div className='navbar-menu'>
               <div
@@ -42,16 +42,7 @@ const Navbar: FC = () => {
               Выйти
             </div>
           </div>
-          :
-          <div>
-            <div
-              onClick={() => router.push(RouteNames.LOGIN)}
-              key={1}
-            >
-              Логин
-            </div>
-          </div>
-        }
+            }
       </div>
     </div>
   );

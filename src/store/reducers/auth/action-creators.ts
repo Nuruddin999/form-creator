@@ -1,45 +1,62 @@
-import { loginApi, signupApi } from './../../../api/user';
+import { loginApi, signupApi, logOut } from './../../../api/user';
 import { AuthActionEnum, SetAuthAction, SetErrorAction, SetIsLoadingAction, SetUserAction } from "./types";
 import { IUser } from "../../../models/IUser";
 import { AppDispatch } from "../../index";
 import axios from "axios";
 import UserService from "../../../api/UserService";
+import { getAuth, signOut } from 'firebase/auth';
 
 export const AuthActionCreators = {
   setUser: (user: IUser): SetUserAction => ({ type: AuthActionEnum.SET_USER, payload: user }),
   setIsAuth: (auth: boolean): SetAuthAction => ({ type: AuthActionEnum.SET_AUTH, payload: auth }),
   setIsLoading: (payload: boolean): SetIsLoadingAction => ({ type: AuthActionEnum.SET_IS_LOADING, payload }),
   setError: (payload: string): SetErrorAction => ({ type: AuthActionEnum.SET_ERROR, payload }),
-  signup: (username: string, password: string) => async (dispatch: AppDispatch) => {
+  signup: (email: string, password: string) => async (dispatch: AppDispatch) => {
     try {
       dispatch(AuthActionCreators.setIsLoading(true));
-      await signupApi({ username, password })
+      await signupApi(email, password)
       dispatch(AuthActionCreators.setIsLoading(false));
     } catch (e) {
-      dispatch(AuthActionCreators.setError('Произошла ошибка при логине'))
+      dispatch(AuthActionCreators.setIsLoading(false));
+      dispatch(AuthActionCreators.setError('Произошла ошибка'))
     }
   },
-  login: (username: string, password: string) => async (dispatch: AppDispatch) => {
+  login: (email: string, password: string) => async (dispatch: AppDispatch) => {
     try {
       dispatch(AuthActionCreators.setIsLoading(true));
-      const response = await loginApi({ username, password })
-      console.log(response)
-      if (response) {
-        localStorage.setItem('access_token', response.access_token)
+      const response = await loginApi(email, password)
+      if (response.uid && response.email) {
         dispatch(AuthActionCreators.setIsAuth(true));
-        dispatch(AuthActionCreators.setUser(response));
+        dispatch(AuthActionCreators.setUser({ uid: response.uid, email: response.email }));
+        dispatch(AuthActionCreators.setIsLoading(false));
       }
-      else {
-        dispatch(AuthActionCreators.setError('Некорректный логин или пароль'));
-      }
+    } catch (e: any) {
       dispatch(AuthActionCreators.setIsLoading(false));
-    } catch (e) {
-      dispatch(AuthActionCreators.setError('Произошла ошибка при логине'))
+      const errorMessage = e.message === 'Firebase: Error (auth/wrong-password).' ? 'неверный пароль' : 'Пользователь не найден'
+      dispatch(AuthActionCreators.setError(errorMessage))
     }
   },
   logout: () => async (dispatch: AppDispatch) => {
-    localStorage.removeItem('access_token');
-    dispatch(AuthActionCreators.setUser({} as IUser));
-    dispatch(AuthActionCreators.setIsAuth(false));
+    try {
+      await logOut()
+      dispatch(AuthActionCreators.setUser({} as IUser));
+      dispatch(AuthActionCreators.setIsAuth(false));
+    } catch (error) {
+
+    }
+  },
+  isLoggedinAction: () => (dispatch: AppDispatch) => {
+    dispatch(AuthActionCreators.setIsLoading(true));
+    try {
+      getAuth().onAuthStateChanged(user => {
+        if (user?.email && user.uid) {
+          dispatch(AuthActionCreators.setUser({ uid: user.uid, email: user.email }));
+          dispatch(AuthActionCreators.setIsAuth(true));
+        }
+        dispatch(AuthActionCreators.setIsLoading(false));
+      })
+    } catch (error) {
+      dispatch(AuthActionCreators.setIsLoading(false));
+    }
   }
 }

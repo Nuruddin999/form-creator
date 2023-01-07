@@ -1,51 +1,56 @@
+
 import { createFormApi, getFormsApi, getFormItemApi, removeFormItemApi, updateFormItemApi } from './../../../api/form';
-import { IFetchedSchema, ISchema, SchemaActionEnum, SetSchemaAction, SetSchemaItemAction } from "./types";
+import { IFetchedSchema, ISchema, SchemaActionEnum, SetSchemaAction, SetSchemaItemAction, SetIsLoadingAction, SetErrorAction } from "./types";
 import { IProperty } from "../../../models/IUser";
 import { AppDispatch, RootState } from "../../index";
+import { DocumentData, QueryDocumentSnapshot } from 'firebase/firestore';
 
 export const FormSchemaActionCreators = {
-  setSchema: (payload: IFetchedSchema[]): SetSchemaAction => ({ type: SchemaActionEnum.SET_SCHEMA, payload }),
-  setSchemaItem: (payload: IFetchedSchema): SetSchemaItemAction => ({ type: SchemaActionEnum.SET_SCHEMA_ITEM, payload }),
+  setSchema: (payload: ISchema[]): SetSchemaAction => ({ type: SchemaActionEnum.SET_SCHEMA, payload }),
+  setSchemaItem: (payload: ISchema): SetSchemaItemAction => ({ type: SchemaActionEnum.SET_SCHEMA_ITEM, payload }),
+  setIsLoading: (payload: boolean): SetIsLoadingAction => ({ type: SchemaActionEnum.SET_IS_LOADING, payload }),
+  setError: (payload: string): SetErrorAction => ({ type: SchemaActionEnum.SET_ERROR, payload }),
   createSchema: (name: string, fields: Array<IProperty>) => async (dispatch: AppDispatch) => {
     try {
+      dispatch(FormSchemaActionCreators.setIsLoading(true));
       await createFormApi({ name, fields })
-      const fetchedSchemas = await getFormsApi()
-      dispatch(FormSchemaActionCreators.setSchema(fetchedSchemas));
+      dispatch(FormSchemaActionCreators.setIsLoading(false));
     } catch (error) {
-      console.log(error)
     }
 
   },
   fetchSchemas: () => async (dispatch: AppDispatch) => {
+    dispatch(FormSchemaActionCreators.setIsLoading(true));
     try {
       const response = await getFormsApi()
       dispatch(FormSchemaActionCreators.setSchema(response));
+      dispatch(FormSchemaActionCreators.setIsLoading(false));
     } catch (e) {
-      console.log(e)
+      dispatch(FormSchemaActionCreators.setIsLoading(false));
     }
   },
-  fetchSchemaItem: (id: number) => async (dispatch: AppDispatch) => {
+  fetchSchemaItem: (id: string) => async (dispatch: AppDispatch) => {
+    dispatch(FormSchemaActionCreators.setIsLoading(true));
     try {
       const response = await getFormItemApi(id)
       dispatch(FormSchemaActionCreators.setSchemaItem(response));
+      dispatch(FormSchemaActionCreators.setIsLoading(false));
     } catch (e) {
-      console.log(e)
+      dispatch(FormSchemaActionCreators.setIsLoading(false));
     }
   },
-  updateSchemaItem: (id: number, schema: ISchema) => async (dispatch: AppDispatch) => {
+  updateSchemaItem: (id: string, schema: ISchema) => async (dispatch: AppDispatch) => {
     try {
-      const response = await updateFormItemApi(id, schema)
+      await updateFormItemApi(id, schema)
     } catch (e) {
-      console.log(e)
     }
   },
-  removeSchemaItem: (id: number) => async (dispatch: AppDispatch) => {
+  removeSchemaItem: (id: string) => async (dispatch: AppDispatch) => {
     try {
       await removeFormItemApi(id)
       const fetchedSchemas = await getFormsApi()
       dispatch(FormSchemaActionCreators.setSchema(fetchedSchemas));
     } catch (e) {
-      console.log(e)
     }
   }
 }

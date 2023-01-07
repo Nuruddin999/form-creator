@@ -143,7 +143,7 @@ const PropertyForm: FC<PropertyFormProps> = ({
         <div className='validation-section-min-max-input'>
           <TextField
             type='text'
-            label={property.type === 'Числовое поле' ? 'Мин. кол-во символов' : 'Мин. значение'}
+            label={property.type === 'Числовое поле' ? 'Мин. значение':'Мин. кол-во символов'}
             value={property.validation.min}
             onChange={(e) => onUpdateProperty('validation', { ...property.validation, min: e.target.value }, propertyNumber)}
             required
@@ -152,7 +152,7 @@ const PropertyForm: FC<PropertyFormProps> = ({
         <div className='validation-section-min-max-input'>
           <TextField
             type='text'
-            label={property.type === 'Числовое поле' ? 'Макс. кол-во символов' : 'Макс. значение'}
+            label={property.type === 'Числовое поле' ? 'Макс. значение': 'Макс. кол-во символов'}
             value={property.validation.max}
             onChange={(e) => onUpdateProperty('validation', { ...property.validation, max: e.target.value }, propertyNumber)}
             required

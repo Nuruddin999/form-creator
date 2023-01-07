@@ -1,3 +1,6 @@
+html, body {
+  height: 100%;
+}
 body {
   margin: 0;
   font-family: -apple-system, "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -16,4 +19,7 @@ body {
 }
 .h100 {
   height: calc(100vh - 64px);
+}
+#root {
+  height: 100%;
 }

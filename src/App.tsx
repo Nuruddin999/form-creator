@@ -7,19 +7,17 @@ import { useActions } from "./hooks/useActions";
 import { IUser } from "./models/IUser";
 
 const App: FC = () => {
-  const { setIsAuth } = useActions();
+  const { isLoggedinAction } = useActions();
 
   useEffect(() => {
-    if (localStorage.getItem('access_token')) {
-      setIsAuth(true);
-    }
+    isLoggedinAction()
   }, [])
 
   return (
-    <div>
+    <>
       <Navbar />
       <AppRouter />
-    </div>
+    </>
   );
 };
 

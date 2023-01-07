@@ -1,0 +1,14 @@
+.loader-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .login-form-wrapper {
+    background: #ffffff;
+    padding: 88px;
+    .login-form-wrapper--inp, .login-form-wrapper--btn {
+      margin-top: 10px;
+    }
+  }
+}
