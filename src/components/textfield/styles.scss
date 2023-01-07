@@ -1,9 +1,10 @@
 .textfield {
   box-sizing: border-box;
+  position: relative;
   .input-container {
     input {
       box-sizing: border-box;
-      padding: 12px 15px;
+      padding: 12px 35px 12px 15px;
       border: 1px solid rgba(23, 23, 25, 0.2);
       border-radius: 5px;
       font-size: 20px;
@@ -32,19 +33,12 @@
         border: 1px solid #1390e5;
       }
     }
-    &.removeIcon {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      border: 1px solid rgba(23, 23, 25, 0.2);
-      border-radius: 5px;
-      width: 90%;
-      margin-left: auto;
-      input {
-        border: unset;
-        border-radius: unset;
-      }
-      span {
+    .remove-icon {
+       position: absolute;
+      right: 20px;
+      cursor: pointer;
+      top: calc(50% - 8px);
+span {
         cursor: pointer;
       }
     }

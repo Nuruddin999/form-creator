@@ -33,9 +33,9 @@
     }
   }
   .property-form-dropdown-inputs {
-    width: 422px;
+    width: calc(422px - 20px);
     flex-direction: column;
-    margin-left: auto;
+    margin-left: 20px;
     .property-form-dropdown-inputs-keyInp {
       width: 300px;
       position: relative;
@@ -48,6 +48,10 @@
         cursor: pointer;
       }
     }
+  }
+  .add-options-button {
+    margin-top: 10px;
+    width: 30%;
   }
   .validation-section {
     margin-left: 108px;

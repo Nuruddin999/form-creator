@@ -71,7 +71,7 @@ const SchemaItem: FC = () => {
   )
   return isLoading ? <div>loading</div> :  (
     <div className='form-item'>
-      {schemaItem.id && <div className='fields-container'>
+      {schemaItem.uid && <div className='fields-container'>
         <h2>{schemaItem.name}</h2>
         <form id='form-item' onSubmit={handleSubmit}>
           {schemaItem.fields.map((field, index) =>

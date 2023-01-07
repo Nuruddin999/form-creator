@@ -7,7 +7,6 @@ import { RouteNames } from '../../router';
 import './styles.scss'
 
 const SchemasList: FC = () => {
-  const [modalVisible, setModalVisible] = useState(false);
   const { fetchSchemas, removeSchemaItem } = useActions();
   const { schemas } = useTypedSelector(state => state.schema);
   const router = useHistory()

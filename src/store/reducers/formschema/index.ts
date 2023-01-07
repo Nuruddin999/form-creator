@@ -4,7 +4,7 @@ import { SchemaAction, SchemaActionEnum, SchemaState } from "./types";
 const initialState: SchemaState = {
   schemas: [],
   schemaItem: {
-    id: '',
+    uid: '',
     name: '',
     fields: []
   },

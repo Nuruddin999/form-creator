@@ -36,6 +36,7 @@ export interface SetErrorAction {
 
 export type ISchema = {
   id?: string,
+  uid?: string,
   name: string,
   fields: Array<IProperty>
 }

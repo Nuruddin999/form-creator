@@ -39,9 +39,8 @@ const TextField: FC<TextFieldProps> = ({
       type={type}
       placeholder={placeholder}
       />
-     { isRemoveIcon && placeholder !== 'значение опции' && <div onClick={delOptionsVaraint}>
-        <span>X</span>
-      </div>}
+     { isRemoveIcon && placeholder !== 'значение опции' && <i className="remove-icon" onClick={delOptionsVaraint}>X</i>
+    }
     </div>
   </div>
 

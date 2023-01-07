@@ -7,6 +7,7 @@ import DeleteIcon from '../../DeleteIcon.svg'
 import ArrowIcon from '../../Arrow.svg'
 import ArrowDownIcon from '../../arrowdown.svg'
 import './property.scss'
+import Button from "../button/button"
 
 type PropertyFormProps = {
   propertyNumber?: number,
@@ -123,7 +124,9 @@ const PropertyForm: FC<PropertyFormProps> = ({
                 />
               </div>
             </div>)}
-            <button type='button' onClick={() => addOptionsVariant()}>Добавить вариант</button>
+            <div className="add-options-button">
+            <Button type='button' onClick={() => addOptionsVariant()} name='Добавить' variant="fill"/>
+            </div>
           </div>}
         </div>
       </div>}

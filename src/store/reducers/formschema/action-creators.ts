@@ -1,28 +1,27 @@
 
 import { createFormApi, getFormsApi, getFormItemApi, removeFormItemApi, updateFormItemApi } from './../../../api/form';
-import { IFetchedSchema, ISchema, SchemaActionEnum, SetSchemaAction, SetSchemaItemAction, SetIsLoadingAction, SetErrorAction } from "./types";
+import {  ISchema, SchemaActionEnum, SetSchemaAction, SetSchemaItemAction, SetIsLoadingAction, SetErrorAction } from "./types";
 import { IProperty } from "../../../models/IUser";
 import { AppDispatch, RootState } from "../../index";
-import { DocumentData, QueryDocumentSnapshot } from 'firebase/firestore';
 
 export const FormSchemaActionCreators = {
   setSchema: (payload: ISchema[]): SetSchemaAction => ({ type: SchemaActionEnum.SET_SCHEMA, payload }),
   setSchemaItem: (payload: ISchema): SetSchemaItemAction => ({ type: SchemaActionEnum.SET_SCHEMA_ITEM, payload }),
   setIsLoading: (payload: boolean): SetIsLoadingAction => ({ type: SchemaActionEnum.SET_IS_LOADING, payload }),
   setError: (payload: string): SetErrorAction => ({ type: SchemaActionEnum.SET_ERROR, payload }),
-  createSchema: (name: string, fields: Array<IProperty>) => async (dispatch: AppDispatch) => {
+  createSchema: (name: string, fields: Array<IProperty>) => async (dispatch: AppDispatch, getState: () => RootState) => {
     try {
       dispatch(FormSchemaActionCreators.setIsLoading(true));
-      await createFormApi({ name, fields })
+      await createFormApi({ name, fields }, getState().auth.user.uid)
       dispatch(FormSchemaActionCreators.setIsLoading(false));
     } catch (error) {
     }
 
   },
-  fetchSchemas: () => async (dispatch: AppDispatch) => {
+  fetchSchemas: () => async (dispatch: AppDispatch,getState: () => RootState) => {
     dispatch(FormSchemaActionCreators.setIsLoading(true));
     try {
-      const response = await getFormsApi()
+      const response = await getFormsApi(getState().auth.user.uid)
       dispatch(FormSchemaActionCreators.setSchema(response));
       dispatch(FormSchemaActionCreators.setIsLoading(false));
     } catch (e) {
@@ -45,10 +44,10 @@ export const FormSchemaActionCreators = {
     } catch (e) {
     }
   },
-  removeSchemaItem: (id: string) => async (dispatch: AppDispatch) => {
+  removeSchemaItem: (id: string) => async (dispatch: AppDispatch, getState: () => RootState) => {
     try {
       await removeFormItemApi(id)
-      const fetchedSchemas = await getFormsApi()
+      const fetchedSchemas = await getFormsApi(getState().auth.user.uid)
       dispatch(FormSchemaActionCreators.setSchema(fetchedSchemas));
     } catch (e) {
     }
