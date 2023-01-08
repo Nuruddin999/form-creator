@@ -28,13 +28,13 @@ const SchemaItem: FC = () => {
         setFieldsError(state => ({ ...state, [label]: 'Поле должно быть заполнено' }))
         formIsValid = false
       }
-      else if (type === 'Числовое поле' && validation.min && validation.max) {
+      else if (type === 'Числовое поле' && validation.required && validation.min && validation.max) {
         if (isNaN(innerStateField)|| parseInt(innerStateField)  < parseInt(validation.min) || parseInt(innerStateField) > parseInt(validation.max)) {
           setFieldsError(state => ({ ...state, [label]: `Значение должно быть не меньше ${validation.min} и не больше ${validation.max}` }))
           formIsValid = false
         }
       }
-      else if (type === 'Текстовое поле' && validation.min && validation.max && validation.pattern) {
+      else if (type === 'Текстовое поле' && validation.required && validation.min && validation.max && validation.pattern) {
         if ((innerStateField as string).length < parseInt(validation.min) || (innerStateField as string).length > parseInt(validation.max)) {
           setFieldsError(state => ({ ...state, [label]: `Символов должно быть не меньше ${validation.min} и не больше ${validation.max}` }))
           formIsValid = false
@@ -44,7 +44,7 @@ const SchemaItem: FC = () => {
           formIsValid = false
         }
       }
-      else if (type === 'Номер телефона') {
+      else if (type === 'Номер телефона' && validation.required) {
         if (!(phoneValidationPattern.test(innerStateField as string))) {
           setFieldsError(state => ({ ...state, [label]: `Телефон должен быть в формате +7 (999) 999 99 99 или в формате 8 (999) 999 99 99` }))
           formIsValid = false
@@ -82,13 +82,14 @@ const SchemaItem: FC = () => {
                     options={field.options.map((option) => option.value)}
                     value={fields[field.label as keyof typeof fields] ? fields[field.label as keyof typeof fields] : ''}
                     onChange={(e) => handleChangeField(field.label, e)}
-                    label={field.label}
+                    label={field.validation.required ? field.label: ''}
+                    error={fieldsError[field.label as keyof typeof fieldsError]}
                   />
                 </div>
                 : <div className='form-item-shema-item'>
                   <TextField
                     error={fieldsError[field.label as keyof typeof fieldsError]}
-                    label={field.label}
+                    label={field.validation.required ? field.label: ''}
                     value={fields[field.label as keyof typeof fields] ? fields[field.label as keyof typeof fields] : ''}
                     onChange={(e) => handleChangeField(field.label, e.target.value)}
                     placeholder={`Введите ${field.label}`}

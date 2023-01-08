@@ -167,6 +167,7 @@ const PropertyForm: FC<PropertyFormProps> = ({
           type='text'
           label='Шаблон ввода'
           value={property.validation.pattern}
+          placeholder='Введите регулярное выражение'
           onChange={(e) => onUpdateProperty('validation', { ...property.validation, pattern: e.target.value }, propertyNumber)}
           required={property.type === 'Пароль' || property.type === 'Текстовое поле'}
         />

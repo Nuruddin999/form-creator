@@ -9,8 +9,9 @@ type TextFieldProps = {
 const Label: FC<TextFieldProps> = ({
   error,
   label
-}) =>  <div className='labelcomp'>
-      <label className={error && 'error'}>{label}</label>
-  </div>
+}) => {
+  return <div className='labelcomp'>
+      <label className={error && 'error'}>{error ? error : label}</label>
+  </div>}
 
 export default Label;

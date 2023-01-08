@@ -3,6 +3,7 @@ import TextField from "../textfield/TextField";
 import './styles.scss'
 import Vector from '../../Vector.svg'
 import Label from "../label/Label";
+import { error } from "console";
 
 type SelectProps = {
   required?: boolean,
@@ -10,7 +11,8 @@ type SelectProps = {
   onChange: (value:string) => void,
   options: Array<string>,
   label: string,
-  propertyNumber?: number
+  propertyNumber?: number,
+  error?: string,
 }
 
 const DropDown: FC<SelectProps> = ({
@@ -19,7 +21,8 @@ const DropDown: FC<SelectProps> = ({
   options,
   value,
   label,
-  propertyNumber
+  propertyNumber,
+  error
 }) => {
   const [isOpen, setOpen] = useState(false)
   const [clickedIndex, setIsClicked] = useState<number | null>(null)
@@ -30,7 +33,7 @@ const DropDown: FC<SelectProps> = ({
   }
   return <div>
     <div>
-      <Label label={label} />
+      <Label label={label} error={error}/>
     </div>
     <div className={`dropdown ${isOpen ? 'isopened' : ''}`}>
       <div   className={`dropdown-header ${isOpen ? 'isopened' : ''}`}><span>
