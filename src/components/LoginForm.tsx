@@ -6,6 +6,7 @@ import TextField from './textfield/TextField';
 import Button from './button/button';
 import ErrorInfo from './error-info/ErrorInfo';
 import Loader from './loader/loader';
+import Flogo from '../flogo.jpg'
 
 const LoginForm: FC = () => {
   const { error, isLoading } = useTypedSelector(state => state.auth);
@@ -52,6 +53,9 @@ const LoginForm: FC = () => {
 
     {isLoading ? <div><Loader /></div> :
       <div className='login-form-wrapper'>
+        <div className='login-form-wrapper-logo'>
+        <img src={Flogo} width={150}/>
+        </div>
         <form
           onSubmit={handleSubmit}
           ref={formRef}

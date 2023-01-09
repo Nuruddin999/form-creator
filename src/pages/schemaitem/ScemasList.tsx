@@ -1,7 +1,8 @@
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import Button from '../../components/button/button';
 import DropDown from '../../components/dropdown/Dropdown';
+import Loader from '../../components/loader/loader';
 import TextField from '../../components/textfield/TextField';
 import { phoneValidationPattern } from '../../constants';
 import { useActions } from '../../hooks/useActions';
@@ -69,7 +70,7 @@ const SchemaItem: FC = () => {
     fetchSchemaItem(id)
   }, []
   )
-  return isLoading ? <div>loading</div> :  (
+  return isLoading ? <div className='loader-wrapper'><Loader /></div> :  (
     <div className='form-item'>
       {schemaItem.uid && <div className='fields-container'>
         <h2>{schemaItem.name}</h2>

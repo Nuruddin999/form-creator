@@ -1,17 +1,26 @@
+.loader-wrapper{
+  width: 100%;
+  height: calc(100% - 81px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .form-item {
   background: #ffffff;
   border-radius: 5px;
   padding: 36px 0 36px 36px;
+  @media (max-width: 1200px) {
+    padding: 20px;
+  }
   .fields-container {
     width: 562px;
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
     .form-item-shema-item {
       margin-top: 20px;
     }
-    // .validation-button,
-    // .form-item-dropdown,
-    // .form-item-shema-item {
-    //   width: 562px;
-    // }
     .validation-button {
       margin-top: 40px;
     }

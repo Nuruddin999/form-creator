@@ -7,6 +7,9 @@
   .login-form-wrapper {
     background: #ffffff;
     padding: 88px;
+    .login-form-wrapper-logo {
+      display: flex;
+    }
     .login-form-wrapper--inp, .login-form-wrapper--btn {
       margin-top: 10px;
     }

@@ -6,10 +6,10 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import { AuthActionCreators } from "../store/reducers/auth/action-creators";
 import "./navbarstyle.scss";
 import { useActions } from "../hooks/useActions";
-
+import Flogo from '../flogo.jpg'
 const Navbar: FC = () => {
   const router = useHistory()
-  const { isAuth, user } = useTypedSelector(state => state.auth);
+  const { isAuth } = useTypedSelector(state => state.auth);
   const { logout } = useActions()
 
 
@@ -20,6 +20,7 @@ const Navbar: FC = () => {
            &&
           <div className='navbar-wrapper'>
             <div className='navbar-menu'>
+            <img src={Flogo}/>
               <div
                 onClick={() => {
                   router.push(RouteNames.SCHEMAS)}}

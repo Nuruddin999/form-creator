@@ -60,7 +60,7 @@ const PropertyForm: FC<PropertyFormProps> = ({
   }
 
   return <div className={`property-form ${isEnabledDisplay() ? 'isDisplayed' : ''}`}>
-    <div>
+    <div className="property-form-left-column">
       <div className={`created-property-item section-title ${propertyNumber !== undefined ? 'is-created' : ''}`}>
         <img
           src={propertyNumber === openTabIndex ? ArrowDownIcon : ArrowIcon}
