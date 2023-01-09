@@ -28,5 +28,8 @@
   .logout-btn {
     cursor: pointer;
    @include centered();
+   &:hover {
+    border-bottom: 2px solid  #1390E5;
+  }
   }
 }
