@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/form-creator/static/css/main.6daa6568.chunk.css",
+    "main.js": "/form-creator/static/js/main.f9d1351a.chunk.js",
+    "main.js.map": "/form-creator/static/js/main.f9d1351a.chunk.js.map",
+    "runtime-main.js": "/form-creator/static/js/runtime-main.dbd09e01.js",
+    "runtime-main.js.map": "/form-creator/static/js/runtime-main.dbd09e01.js.map",
+    "static/js/2.d443ce86.chunk.js": "/form-creator/static/js/2.d443ce86.chunk.js",
+    "static/js/2.d443ce86.chunk.js.map": "/form-creator/static/js/2.d443ce86.chunk.js.map",
+    "index.html": "/form-creator/index.html",
+    "static/css/main.6daa6568.chunk.css.map": "/form-creator/static/css/main.6daa6568.chunk.css.map",
+    "static/js/2.d443ce86.chunk.js.LICENSE.txt": "/form-creator/static/js/2.d443ce86.chunk.js.LICENSE.txt",
+    "static/media/Arrow.8afdceb1.svg": "/form-creator/static/media/Arrow.8afdceb1.svg",
+    "static/media/DeleteIcon.4ad48d4d.svg": "/form-creator/static/media/DeleteIcon.4ad48d4d.svg",
+    "static/media/Vector.ce7aa419.svg": "/form-creator/static/media/Vector.ce7aa419.svg",
+    "static/media/arrowdown.68dc6f63.svg": "/form-creator/static/media/arrowdown.68dc6f63.svg",
+    "static/media/flogo.150cc412.jpg": "/form-creator/static/media/flogo.150cc412.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dbd09e01.js",
+    "static/js/2.d443ce86.chunk.js",
+    "static/css/main.6daa6568.chunk.css",
+    "static/js/main.f9d1351a.chunk.js"
+  ]
+}
