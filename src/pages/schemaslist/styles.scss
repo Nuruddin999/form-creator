@@ -7,6 +7,7 @@
     background: #ffffff;
     border-bottom: 1px solid #f1f1f1;
     padding: 13px 0 14px 20px;
+    flex-wrap: wrap;
     &:hover {
       background: #f1f1f1;
       background-blend-mode: multiply;
@@ -30,8 +31,15 @@
       }
     }
   }
+  @media (max-width: 1023px) {
+    margin: 15px;
+  }
 }
 .schema-list-create-schema-button {
   width: 195px;
   margin-top: 40px;
+  @media (max-width: 1023px) {
+   width: 80%;
+   margin: 15px auto 0;
+  }
 }

@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import  { FC } from 'react';
 import './errorinfostyle.scss'
 
 const ErrorInfo: FC<{title:string}> = ({title}) => {

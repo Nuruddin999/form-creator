@@ -1,12 +1,12 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
-import { useTypedSelector } from "../hooks/useTypedSelector";
-import { useActions } from "../hooks/useActions";
+import { FC, useEffect, useRef, useState } from 'react';
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useActions } from "../../hooks/useActions";
 import "./loginformstyle.scss";
-import TextField from './textfield/TextField';
-import Button from './button/button';
-import ErrorInfo from './error-info/ErrorInfo';
-import Loader from './loader/loader';
-import Flogo from '../flogo.jpg'
+import TextField from '../textfield/TextField';
+import Button from '../button/button';
+import ErrorInfo from '../error-info/ErrorInfo';
+import Loader from '../loader/loader';
+import Flogo from '../../flogo.jpg'
 
 const LoginForm: FC = () => {
   const { error, isLoading } = useTypedSelector(state => state.auth);

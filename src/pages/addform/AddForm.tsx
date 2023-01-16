@@ -1,17 +1,13 @@
-import { STATEMENT_OR_BLOCK_KEYS } from '@babel/types';
-import { stat } from 'fs';
-import React, { FC, useEffect, useRef, useState } from 'react';
-import { Redirect } from 'react-router';
+
+import  { FC, useEffect,  useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Button from '../../components/button/button';
 import PropertyForm from '../../components/property/PropertyForm';
-import ToggleSWitch from '../../components/ToggleSwitch';
 import { useActions } from '../../hooks/useActions';
 import { usePrevious } from '../../hooks/usePrevious';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { IOptions, IProperty } from '../../models/IUser';
+import {  IProperty } from '../../models/IUser';
 import { RouteNames } from '../../router';
-import DeleteIcon from '../../DeleteIcon.svg';
 import './styles.scss'
 import TextField from '../../components/textfield/TextField';
 import Loader from '../../components/loader/loader';
@@ -20,7 +16,7 @@ interface AddModalProps {
 }
 
 const AddModal: FC<AddModalProps> = (props) => {
-  const { schemaItem, isLoading, error } = useTypedSelector(state => state.schema);
+  const { schemaItem, isLoading } = useTypedSelector(state => state.schema);
 
   let { id } = useParams<{ id?: string }>()
   const [properties, setProperty] = useState<Array<IProperty>>(id ? schemaItem.fields : [])

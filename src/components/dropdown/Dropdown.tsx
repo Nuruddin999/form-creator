@@ -1,9 +1,9 @@
-import React, { FC, useState } from "react";
-import TextField from "../textfield/TextField";
+import  { FC, useState } from "react";
+
 import './styles.scss'
 import Vector from '../../Vector.svg'
 import Label from "../label/Label";
-import { error } from "console";
+
 
 type SelectProps = {
   required?: boolean,

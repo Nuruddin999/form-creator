@@ -1,0 +1,45 @@
+@mixin centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar-wrapper {
+  display: flex;
+  justify-content: space-around;
+  background-color: #ffffff;
+  height: 80px;
+  color: #1390e5;
+  font-size: 18px;
+  border-bottom: 1px solid #f1f1f1;
+  .navbar-menu {
+    display: flex;
+    justify-content: space-between;
+    div {
+      @include centered();
+      margin: 0 9px;
+      padding: 0 20px;
+      height: 100%;
+      cursor: pointer;
+      &:hover {
+        border-bottom: 2px solid #1390e5;
+      }
+    }
+    @media (max-width: 1023px) {
+      font-size: 12px;
+      img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+  .logout-btn {
+    cursor: pointer;
+    @include centered();
+    &:hover {
+      border-bottom: 2px solid #1390e5;
+    }
+    @media (max-width: 1023px) {
+      font-size: 12px;
+    }
+  }
+}

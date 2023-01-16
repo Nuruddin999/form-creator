@@ -1,7 +1,6 @@
 
 
 import { ISchema } from "../store/reducers/formschema/types";
-import { formApi } from "./index";
 import { db } from "./firebase-config";
 import {
   collection,

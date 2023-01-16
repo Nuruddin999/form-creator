@@ -1,12 +1,10 @@
-import React, { FC } from 'react';
-import { Layout, Menu, Row } from "antd";
+import { FC } from 'react';
 import { useHistory } from 'react-router-dom';
-import { RouteNames } from "../router";
-import { useTypedSelector } from "../hooks/useTypedSelector";
-import { AuthActionCreators } from "../store/reducers/auth/action-creators";
+import { RouteNames } from "../../router";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 import "./navbarstyle.scss";
-import { useActions } from "../hooks/useActions";
-import Flogo from '../flogo.jpg'
+import { useActions } from "../../hooks/useActions";
+import Flogo from '../../flogo.jpg'
 const Navbar: FC = () => {
   const router = useHistory()
   const { isAuth } = useTypedSelector(state => state.auth);
@@ -17,13 +15,14 @@ const Navbar: FC = () => {
     <div>
       <div>
         {isAuth
-           &&
+          &&
           <div className='navbar-wrapper'>
             <div className='navbar-menu'>
-            <img src={Flogo}/>
+              <img src={Flogo} />
               <div
                 onClick={() => {
-                  router.push(RouteNames.SCHEMAS)}}
+                  router.push(RouteNames.SCHEMAS)
+                }}
                 key={1}
               >
                 Мои схемы
@@ -43,7 +42,7 @@ const Navbar: FC = () => {
               Выйти
             </div>
           </div>
-            }
+        }
       </div>
     </div>
   );

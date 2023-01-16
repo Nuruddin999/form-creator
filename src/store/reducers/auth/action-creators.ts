@@ -2,9 +2,7 @@ import { loginApi, signupApi, logOut } from './../../../api/user';
 import { AuthActionEnum, SetAuthAction, SetErrorAction, SetIsLoadingAction, SetUserAction } from "./types";
 import { IUser } from "../../../models/IUser";
 import { AppDispatch } from "../../index";
-import axios from "axios";
-import UserService from "../../../api/UserService";
-import { getAuth, signOut } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 
 export const AuthActionCreators = {
   setUser: (user: IUser): SetUserAction => ({ type: AuthActionEnum.SET_USER, payload: user }),

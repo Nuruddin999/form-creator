@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import Button from '../../components/button/button';
 import { useActions } from '../../hooks/useActions';

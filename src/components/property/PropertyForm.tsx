@@ -2,7 +2,7 @@ import { FC } from "react"
 import { IProperty } from "../../models/IUser"
 import DropDown from "../dropdown/Dropdown"
 import TextField from "../textfield/TextField"
-import ToggleSWitch from "../ToggleSwitch"
+import ToggleSWitch from "../../components/toggle/ToggleSwitch"
 import DeleteIcon from '../../DeleteIcon.svg'
 import ArrowIcon from '../../Arrow.svg'
 import ArrowDownIcon from '../../arrowdown.svg'

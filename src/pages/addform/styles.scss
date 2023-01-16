@@ -33,5 +33,11 @@
 .property-action-butttons {
   margin-top: 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+  @media (max-width: 1023px) {
+    width: 80%;
+    flex-direction: column;
+    margin: 10px auto 0;
+   }
 }

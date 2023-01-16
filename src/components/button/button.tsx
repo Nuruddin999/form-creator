@@ -1,6 +1,4 @@
-import { type } from "os";
-import React, { FC } from "react";
-import { DiagnosticCategory } from "typescript";
+import { FC } from "react";
 import './styles.scss'
 
 type ButtonProps = {
