@@ -24,7 +24,6 @@ export const getFormsApi = async (id:string) : Promise<any> => {
   const q = query(collection(db, "schemas"), where("uid", "==", id));
   const data = await getDocs(q)
   const schemas =  data.docs.map((doc) => ({ ...doc.data(), id:doc.id }))
-  console.log(schemas)
   return schemas
 
 }
