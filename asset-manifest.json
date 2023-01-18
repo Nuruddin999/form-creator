@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/form-creator/static/css/main.fa2da7ee.chunk.css",
-    "main.js": "/form-creator/static/js/main.ab59a30d.chunk.js",
-    "main.js.map": "/form-creator/static/js/main.ab59a30d.chunk.js.map",
+    "main.js": "/form-creator/static/js/main.2a282320.chunk.js",
+    "main.js.map": "/form-creator/static/js/main.2a282320.chunk.js.map",
     "runtime-main.js": "/form-creator/static/js/runtime-main.dbd09e01.js",
     "runtime-main.js.map": "/form-creator/static/js/runtime-main.dbd09e01.js.map",
     "static/js/2.d443ce86.chunk.js": "/form-creator/static/js/2.d443ce86.chunk.js",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.dbd09e01.js",
     "static/js/2.d443ce86.chunk.js",
     "static/css/main.fa2da7ee.chunk.css",
-    "static/js/main.ab59a30d.chunk.js"
+    "static/js/main.2a282320.chunk.js"
   ]
 }
