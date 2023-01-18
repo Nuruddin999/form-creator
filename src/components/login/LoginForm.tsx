@@ -53,6 +53,10 @@ const LoginForm: FC = () => {
 
     {isLoading ? <div><Loader /></div> :
       <div className='login-form-wrapper'>
+        <p>Если вы <strong>НЕ ЗАРЕГИСТРИРОВАНЫ {"\n"}</strong>
+        <br/>
+          Введите в поля свои данные, <br/> под которомы вы хотите создать аккаунт <br/> и нажмите кнопку "Зарегистрироваться"
+        </p>
         <div className='login-form-wrapper-logo'>
         <img src={Flogo} width={150}/>
         </div>
